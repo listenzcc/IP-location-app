@@ -35,6 +35,7 @@ class IpToolbox(object):
     mapbox_access_token = open(pwd.joinpath('.mapboxtoken')).read()
     headers = json.loads(open(pwd.joinpath('headers.json')).read())
     proxies = json.loads(open(pwd.joinpath('proxy.json')).read())
+    alt_img = Image.open(pwd.joinpath('world map.jpg'))
 
     def get_ip_address(self, use_proxy: bool = False):
         '''
@@ -120,8 +121,7 @@ class IpToolbox(object):
             logger.debug(f'Got {img} from {url}')
         except:
             logger.error('Failed got img')
-            img = Image.open(
-                self.pwd.joinpath('world map.jpg')).resize((width, height))
+            img = self.alt_img.resize((width, height))
         return img
 
 # %% ---- 2024-10-17 ------------------------
