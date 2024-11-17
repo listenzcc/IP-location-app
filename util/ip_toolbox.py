@@ -110,8 +110,7 @@ class IpToolbox(object):
             The received image.
         '''
         token = f'access_token={self.mapbox_access_token}'
-        url = f"https://api.mapbox.com/styles/v1/mapbox/streets-v12/static/{lon},{
-            lat},{zoom},20/{width}x{height}?{token}"
+        url = f"https://api.mapbox.com/styles/v1/mapbox/streets-v12/static/{lon},{lat},{zoom},20/{width}x{height}?{token}"
         logger.debug(f'Requesting {url}')
         try:
             resp = requests.get(url, headers=self.headers,
@@ -119,7 +118,7 @@ class IpToolbox(object):
             buf = io.BytesIO(resp.content)
             img = Image.open(buf)
             logger.debug(f'Got {img} from {url}')
-        except:
+        except Exception:
             logger.error('Failed got img')
             img = self.alt_img.resize((width, height))
         return img

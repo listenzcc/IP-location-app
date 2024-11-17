@@ -91,7 +91,6 @@ class AnimatingCanvas(object):
         self.canvas: tk.Canvas = canvas
         self.canvas_img = None
         self.queried_img = None
-        pass
 
     def query_img(self, lat, lon, width=300, height=300):
         def _bg():
@@ -128,7 +127,7 @@ class AnimatingCanvas(object):
 
 
 class MyFrame(ttk.Frame):
-    title = 'My customized frame'
+    title = 'Local IP and location'
     label_text = 'Label'
     box_size = {'width': 30, 'height': 15}
     canvas_size = {'width': 300, 'height': 300}
@@ -197,6 +196,7 @@ if __name__ == '__main__':
 
     # --------------------------------------------------------------------------------
     frm2 = MyFrame(root, padding=20, width=600)
+    frm2.title = 'Proxy IP and location'
     frm2.layout()
     frm2.draw_vpn_ip()
     frm2.grid(row=0, column=1)
